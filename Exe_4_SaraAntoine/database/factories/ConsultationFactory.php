@@ -22,7 +22,9 @@ class ConsultationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'date'=>$this->faker->date,
+            'methode'=>$this->faker->text,
+            'description'=>$this->faker->text,
         ];
     }
 }

@@ -22,7 +22,9 @@ class TherapieFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'sujet'=>$this->faker->text,
+            'tarif'=>$this->faker->randomFloat(2),
+            'statut'=>$this->faker->rand(0,1),
         ];
     }
 }
