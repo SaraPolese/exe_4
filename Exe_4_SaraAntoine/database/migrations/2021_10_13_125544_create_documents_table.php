@@ -14,7 +14,7 @@ class CreateDocumentsTable extends Migration
     public function up()
     {
         Schema::create('documents', function (Blueprint $table) {
-             // je crée mes champs
+            // je crée mes champs
            $table->id();
            $table->timestamps();
            $table->enum('type', ['pv', 'fiche_patient']);
