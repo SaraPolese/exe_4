@@ -14,8 +14,12 @@ class CreatePersonnesTable extends Migration
     public function up()
     {
         Schema::create('personnes', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            // je crée mes champs
+           $table->id();
+           $table->timestamps();
+           $table->char('nom', 30);
+           $table->char('prenom', 30);
+           $table->char('email', 30);
         });
     }
 
