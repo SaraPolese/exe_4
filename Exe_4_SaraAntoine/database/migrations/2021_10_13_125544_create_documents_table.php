@@ -14,8 +14,22 @@ class CreateDocumentsTable extends Migration
     public function up()
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+             // je crée mes champs
+           $table->id();
+           $table->timestamps();
+           $table->enum('type', ['pv', 'fiche_patient']);
+           $table->string('description');
+           $table->string('chemin');
+           $table->unsignedInteger('taille');
+
+           // je crée mes relation
+           $table->unsignedBigInteger('personne_id');
+           $table->foreign('personne_id')
+                   ->references('id')
+                   ->on('personnes')
+                   ->onDelete('restrict')
+                   ->onUpdate('restrict');
+
         });
     }
 
