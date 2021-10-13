@@ -19,7 +19,7 @@ class CreateTherapiesTable extends Migration
            $table->timestamps();
            $table->string('sujet');
            $table->float('tarif', 8,2);
-           $table->tinyInt('statut',1);
+           $table->tinyInteger('statut');
 
 
             // je crée mes relation
