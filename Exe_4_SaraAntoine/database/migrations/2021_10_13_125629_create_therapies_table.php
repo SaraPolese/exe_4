@@ -14,8 +14,21 @@ class CreateTherapiesTable extends Migration
     public function up()
     {
         Schema::create('therapies', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+           // je crée mes champs
+           $table->id();
+           $table->timestamps();
+           $table->string('sujet');
+           $table->float('tarif', 8,2);
+           $table->tinyInt('statut',1);
+
+
+            // je crée mes relation
+            $table->unsignedBigInteger('document_id');
+            $table->foreign('document_id')
+                   ->references('id')
+                   ->on('documents')
+                   ->onDelete('restrict')
+                   ->onUpdate('restrict');
         });
     }
 
