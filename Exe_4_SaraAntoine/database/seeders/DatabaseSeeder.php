@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $personnes = Personne::factory()->count(20)->create();
 
       
+        //Insert documents
         $documents = Document::factory()->count(10)->make()
             ->each(function($document) use ($personnes) {
             $document->personne_id = $personnes->random()->id;
@@ -29,7 +30,7 @@ class DatabaseSeeder extends Seeder
             });
         
 
-        
+        //Insert projets
         $projets = Projet::factory()->count(10)->make()
             ->each(function($projet) use ($personnes, $documents) {
             $projet->personne_id = $personnes->random()->id;
@@ -37,12 +38,15 @@ class DatabaseSeeder extends Seeder
             $projet->save();
         });
 
+
+        //Insert therapies
         $therapies = Therapie::factory()->count(10)->make()
             ->each(function($therapie) use ($documents) {
             $therapie->document_id = $documents->random()->id;
             $therapie->save();
         });
 
+        //Insert consultations
         $consultations = Consultation::factory()->count(10)->make()
             ->each(function($consultation) use ($personnes, $therapies) {
             $consultation->personne_id = $personnes->random()->id;
