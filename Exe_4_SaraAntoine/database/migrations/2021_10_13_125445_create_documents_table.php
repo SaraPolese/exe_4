@@ -17,6 +17,7 @@ class CreateDocumentsTable extends Migration
             // je crée mes champs
            $table->id();
            $table->timestamps();
+           $table->char('nom', 30);
            $table->enum('type', ['pv', 'fiche_patient']);
            $table->string('description');
            $table->string('chemin');

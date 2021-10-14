@@ -24,7 +24,7 @@ class PersonneFactory extends Factory
         return [
             'nom'=>$this->faker->firstName,
             'prenom'=>$this->faker->lastName,
-            'mail'=>$this->faker->email,
+            'email'=>$this->faker->email,
         ];
     }
 }

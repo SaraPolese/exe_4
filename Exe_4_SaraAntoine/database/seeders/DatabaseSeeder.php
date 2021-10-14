@@ -3,11 +3,11 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Personne;
-use App\Models\Consultation;
 use App\Models\Document;
+use App\Models\Personne;
 use App\Models\Projet;
 use App\Models\Therapie;
+use App\Models\Consultation;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +18,38 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        //Info personnes
+        $personnes = Personne::factory()->count(20)->create();
+
+      
+        $documents = Document::factory()->count(10)->make()
+            ->each(function($document) use ($personnes) {
+            $document->personne_id = $personnes->random()->id;
+            $document->save();
+            });
+        
+
+        
+        $projets = Projet::factory()->count(10)->make()
+            ->each(function($projet) use ($personnes, $documents) {
+            $projet->personne_id = $personnes->random()->id;
+            $projet->document_id = $documents->random()->id;
+            $projet->save();
+        });
+
+        $therapies = Therapie::factory()->count(10)->make()
+            ->each(function($therapie) use ($documents) {
+            $therapie->document_id = $documents->random()->id;
+            $therapie->save();
+        });
+
+        $consultations = Consultation::factory()->count(10)->make()
+            ->each(function($consultation) use ($personnes, $therapies) {
+            $consultation->personne_id = $personnes->random()->id;
+            $consultation->therapie_id = $therapies->random()->id;
+            $consultation->save();
+        });
+        
+
     }
 }

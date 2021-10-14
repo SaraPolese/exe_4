@@ -23,8 +23,8 @@ class TherapieFactory extends Factory
     {
         return [
             'sujet'=>$this->faker->text,
-            'tarif'=>$this->faker->randomFloat(2),
-            'statut'=>$this->faker->rand(0,1),
+            'tarif'=>$this->faker->randomFloat(2, 1, 10),
+            'statut'=>$this->faker->numberBetween(0,1),
         ];
     }
 }

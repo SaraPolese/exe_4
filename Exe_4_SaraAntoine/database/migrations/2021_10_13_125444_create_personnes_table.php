@@ -19,7 +19,7 @@ class CreatePersonnesTable extends Migration
            $table->timestamps();
            $table->char('nom', 30);
            $table->char('prenom', 30);
-           $table->char('email', 30);
+           $table->char('email', 60);
         });
     }
 

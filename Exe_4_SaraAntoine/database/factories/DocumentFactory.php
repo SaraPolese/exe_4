@@ -23,7 +23,7 @@ class DocumentFactory extends Factory
     {
         return [
             'nom'=>$this->faker->word,
-            'type'=>$this->faker->randomElement($array = array ('pv', 'ficher_patient')),
+            'type'=>$this->faker->randomElement($array = array ('pv', 'fiche_patient')),
             'description'=>$this->faker->text,
             'chemin'=>$this->faker->word,
             'taille'=>$this->faker->numberBetween(1, 1000),
