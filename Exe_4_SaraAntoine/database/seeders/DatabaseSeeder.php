@@ -19,6 +19,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //$categories = Category::factory()->count(5)->create();
+        //Info personnes
+        $personnes = Personne::factory()->count(20)->create();
+
+      
+        $documents = Document::factory()->count(10)->make()
+            ->each(function($document) use ($personnes) {
+            $document->personne_id = $personnes->random()->id;
+            $document->save();
+            });
+        
+
+        
+        $projets = Projet::factory()->count(10)->make()
+            ->each(function($projet) use ($personnes, $documents) {
+            $projet->personne_id = $personnes->random()->id;
+            $projet->document_id = $documents->random()->id;
+            $projet->save();
+        });
+        
+
     }
 }
