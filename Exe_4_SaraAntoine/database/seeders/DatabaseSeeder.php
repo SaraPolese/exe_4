@@ -9,7 +9,6 @@ use App\Models\Projet;
 use App\Models\Therapie;
 use App\Models\Consultation;
 
-
 class DatabaseSeeder extends Seeder
 {
     /**
