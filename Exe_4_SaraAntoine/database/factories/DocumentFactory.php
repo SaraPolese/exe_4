@@ -22,7 +22,11 @@ class DocumentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nom'=>$this->faker->word,
+            'type'=>$this->faker->randomElement($array = array ('pv', 'fiche_patient')),
+            'description'=>$this->faker->text,
+            'chemin'=>$this->faker->word,
+            'taille'=>$this->faker->numberBetween(1, 1000),
         ];
     }
 }

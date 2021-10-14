@@ -22,7 +22,9 @@ class PersonneFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nom'=>$this->faker->firstName,
+            'prenom'=>$this->faker->lastName,
+            'email'=>$this->faker->email,
         ];
     }
 }
