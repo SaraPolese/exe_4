@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ConsultationController;
+use App\Http\Controllers\Api\ProjetController;
+use App\Http\Controllers\Api\DocumentController;
+use App\Http\Controllers\Api\PersonneController;
+use App\Http\Controllers\Api\TherapieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +18,22 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::resource('consultations', ConsultationController::class);
+Route::get('personnes/{id}/{fieldname}', [PersonneController::class, 'showPersonneWithField']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+/*
+/api/consutations => Get
+/api/consutations => post
+/api/consutations/id => Get
+/api/consutations/id => patch
+/api/consutations/id => delete
+*/
+
+Route::resource('projets', ProjetController::class);
+
+Route::resource('documents', DocumentController::class);
+
+Route::resource('personnes', PersonneController::class);
+
+Route::resource('therapies', TherapieController::class);
+
