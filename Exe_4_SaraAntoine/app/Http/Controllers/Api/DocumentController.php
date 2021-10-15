@@ -27,7 +27,14 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $document = new Document;
+        $document->nom = $request->nom;
+        $document->type = $request->type;
+        $document->description = $request->description;
+        $document->chemin = $request->chemin;
+        $document->taille = $request->taille;
+        $document->personne_id = $request->personne_id;
+        $document->save();
     }
 
     /**

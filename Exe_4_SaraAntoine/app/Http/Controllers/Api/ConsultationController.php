@@ -28,7 +28,14 @@ class ConsultationController extends Controller
      */
     public function store(Request $request)
     {
-        Consultation::create($request->all());
+        //dd($request->date);
+        $consultation = new Consultation;
+        $consultation->date = $request->date;
+        $consultation->methode = $request->methode;
+        $consultation->description = $request->description;
+        $consultation->personne_id = $request->personne_id;
+        $consultation->therapie_id = $request->therapie_id;
+        $consultation->save();
     }
 
     /**

@@ -26,7 +26,11 @@ class PersonneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $personne = new Personne;
+        $personne->nom = $request->nom;
+        $personne->prenom = $request->prenom;
+        $personne->email = $request->email;
+        $personne->save();
     }
 
     /**

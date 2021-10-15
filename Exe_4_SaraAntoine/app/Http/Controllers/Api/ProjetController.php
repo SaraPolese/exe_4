@@ -28,7 +28,14 @@ class ProjetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $projet = new Projet;
+        $projet->nom = $request->nom;
+        $projet->date_debut = $request->date_debut;
+        $projet->date_fin = $request->date_fin;
+        $projet->etape = $request->etape;
+        $projet->document_id = $request->document_id;
+        $projet->personne_id = $request->personne_id;
+        $projet->save();
     }
 
     /**

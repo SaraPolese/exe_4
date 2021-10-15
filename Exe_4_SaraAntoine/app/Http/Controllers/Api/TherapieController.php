@@ -27,7 +27,12 @@ class TherapieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $therapie = new Therapie;
+        $therapie->sujet = $request->sujet;
+        $therapie->tarif = $request->tarif;
+        $therapie->statut = $request->statut;
+        $therapie->document_id = $request->document_id;
+        $therapie->save();
     }
 
     /**
