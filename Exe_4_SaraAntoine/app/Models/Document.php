@@ -22,8 +22,8 @@ class Document extends Model
         return $this->hasMany(Therapie::class);
     }
 
-    public function projet() 
+    public function projets() 
     {
-        return $this->belongsTo(Projet::class);
+        return $this->hasMany(Projet::class);
     }
 }

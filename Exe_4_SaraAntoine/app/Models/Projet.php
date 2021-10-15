@@ -18,8 +18,8 @@ class Projet extends Model
         return $this->belongsTo(Personne::class);
     }
 
-    public function Documents()
+    public function document()
     {
-        return $this->hasMany(Document::class);
+        return $this->belongsTo(Document::class);
     }
 }

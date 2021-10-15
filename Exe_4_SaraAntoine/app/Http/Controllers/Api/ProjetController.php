@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Personne;
+use App\Models\Document;
+use App\Models\Projet;
 
 class ProjetController extends Controller
 {
@@ -34,9 +37,12 @@ class ProjetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Projet $projet)
     {
-        //
+        $projet->personne;
+        $projet->document;
+        $result = $projet;
+        return $result;
     }
 
     /**
