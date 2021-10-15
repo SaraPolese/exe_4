@@ -15,7 +15,7 @@ class PersonneController extends Controller
      */
     public function index()
     {
-        //
+        return Personne::all();
     }
 
     /**
@@ -36,8 +36,9 @@ class PersonneController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function show(Personne $personne)
+    public function show($id)
     {
+        $personne = Personne::findOrFail($id);
         return $personne;
     }
 
@@ -74,6 +75,7 @@ class PersonneController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $personne = Personne::findOrFail($id);
+        $personne->delete();
     }
 }

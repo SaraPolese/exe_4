@@ -17,7 +17,7 @@ class ConsultationController extends Controller
      */
     public function index()
     {
-        //
+        return Consultation::all();
     }
 
     /**
@@ -28,7 +28,7 @@ class ConsultationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Consultation::create($request->all());
     }
 
     /**
@@ -37,12 +37,12 @@ class ConsultationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Consultation $consultation)
+    public function show($id)
     {
+        $consultation = Consultation::findOrFail($id);
         $consultation->personne;
         $consultation->therapie;
-        $result = $consultation;
-        return $result;
+        return $consultation;
     }
 
     /**
@@ -52,9 +52,9 @@ class ConsultationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Consultation $consultation)
     {
-        //
+        $consultation->update($request->all());
     }
 
     /**
@@ -65,6 +65,7 @@ class ConsultationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $consultation = Consultation::findOrFail($id);
+        $consultation->delete();
     }
 }

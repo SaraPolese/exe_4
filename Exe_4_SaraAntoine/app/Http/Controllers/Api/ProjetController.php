@@ -17,7 +17,7 @@ class ProjetController extends Controller
      */
     public function index()
     {
-        //
+        return Projet::all();
     }
 
     /**
@@ -37,12 +37,12 @@ class ProjetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Projet $projet)
+    public function show($id)
     {
+        $projet = Projet::findOrFail($id);
         $projet->personne;
         $projet->document;
-        $result = $projet;
-        return $result;
+        return $projet;
     }
 
     /**
@@ -65,6 +65,7 @@ class ProjetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $projet = Projet::findOrFail($id); 
+        $projet->delete();
     }
 }

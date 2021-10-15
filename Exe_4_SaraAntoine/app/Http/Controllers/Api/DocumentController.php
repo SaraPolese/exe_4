@@ -16,7 +16,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        //
+        return Document::all();
     }
 
     /**
@@ -36,11 +36,11 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Document $document)
+    public function show($id)
     {
+        $document = Document::findOrFail($id);
         $document->personne;
-        $result = $document;
-        return $result;
+        return $document;
     }
 
     /**
@@ -63,6 +63,7 @@ class DocumentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $document = Document::findOrFail($id);
+        $document->delete();
     }
 }

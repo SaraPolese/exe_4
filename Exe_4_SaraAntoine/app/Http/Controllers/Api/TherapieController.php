@@ -16,7 +16,7 @@ class TherapieController extends Controller
      */
     public function index()
     {
-        //
+        return Therapie::all();
     }
 
     /**
@@ -36,10 +36,10 @@ class TherapieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Therapie $therapie)
+    public function show($id)
     {
-        //$therapie->document;
-        //$result = $therapie;
+        $therapie = Therapie::findOrFail($id);
+        $therapie->document;
         return $therapie;
     }
 
@@ -63,6 +63,7 @@ class TherapieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $therapie = Therapie::findOrFail($id);
+        $therapie->delete();
     }
 }
